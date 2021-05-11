@@ -1,0 +1,10 @@
+{% extends "base.html" %} 
+{% block title %}Последние обновления {% endblock %}
+
+{% block content %}
+<p class="single-card__section-text">
+    Точно хотите удалить плейлист?
+</p> 
+<a href="{% url 'index' %}" >Нет </a>
+<a href="{% url 'playlist_delete' playlist.id %}" >Да, точно </a>
+{% endblock %}

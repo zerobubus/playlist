@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}Последние обновления {% endblock %} {% block content %}
+<div class="container">
+
+
+    {% if playlist %}
+
+    <p class="fst-normal">Список плейлистов</p>
+
+    {% for post in playlist %} {% include "includes/post_item.html" with post=post %} {% endfor %} {% else %}
+    <h1>Добро пожаловать!</h1>
+    <h2>К сожалению, у Вас пока нет ниодного плейлиста.</h2>
+    <a class="btn btn-success" href="{% url 'new_playlist' %}" role="button">
+                        Создать плейлист
+                </a> {% endif %}
+</div>
+
+{% endblock %}

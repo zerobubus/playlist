@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block title %}Последние обновления {% endblock %} {% block content %}
+
+
+<a> Название плейлиста:</a> {{ playlist }}
+<div class="container">
+    {% for tr in playlist.track.all %}
+    <div class="row align-items-start">
+        <div class="col">
+            {{ tr }}
+        </div>
+        <div class="col">
+            {% for tag in tr.tags.all %}
+            <span class="badge badge-primary">{{ tag }} </span> {% endfor %}
+        </div>
+
+    </div>
+
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

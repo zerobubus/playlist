@@ -1,0 +1,39 @@
+<div class="card mb-3 mt-1 shadow-sm">
+
+
+    <div class="container">
+
+        <div class="row align-items-start">
+            <div class="col-md">
+                <a href="{% url 'playlist' post.id %}">{{ post }} </a>
+            </div>
+            <div class="col-md">
+                <a class="p-2 text-danger" href="#myModal" data-toggle="modal">Удалить</a> {% if user == post.user %}
+                <a class="p-2 text-dark" href="{% url 'playlist_edit' post.id %}">
+                        Редактировать
+                </a> {% endif %}
+            </div>
+
+        </div>
+
+
+    </div>
+    <div id="myModal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Подтверждение</h5>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <p>Вы точно хотите удалить плейлист?</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <a class="btn btn-danger" href="{% url 'playlist_delete' post.id %}"> Удалить </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

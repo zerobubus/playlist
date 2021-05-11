@@ -1,0 +1,13 @@
+<nav class="navbar navbar-light" style="background-color: white;">
+    <a class="navbar-brand" href="/"><span style="color:rgb(0, 255, 76)">P</span>laylist</a>
+    <nav class="my-2 my-md-0 mr-md-3">
+        {% if user.is_authenticated %}
+        Пользователь: {{ user.username }}
+        <a class="p-2 text-blue" href="{% url 'new_playlist' %}">Создать новый плейлист</a>
+        <a class="p-2 text-dark" href="{% url 'account_logout' %}">Выйти</a>
+        {% else %}
+        <a class="p-2 text-dark" href="{% url 'account_login' %}">Войти</a> |
+        <a class="p-2 text-dark" href="{% url 'account_signup' %}">Регистрация</a>
+        {% endif %}
+    </nav>
+</nav>

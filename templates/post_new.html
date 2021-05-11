@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Создать новый пост{% endblock %} {% block content %} {% load bootstrap4 %} {# Display a form #}
+
+<form method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="id_name" class="form__label">Название</label>
+        <input type="text" class="form-control" value="{{ form.name.value|default_if_none:'' }}" id="id_name" name="name" placeholder="Название">
+        <span class="form__error">{{ form.name.errors }}</span>
+    </div>
+
+    {% for track in form.fields.track.choices.queryset %}
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="track" id="id_{{ track.title }}" value="{{ track.pk }}" {% if track.pk in form.track.value %}checked{% endif %}>
+        <label for="id_{{ track.title }}" class="form-check-label">{{ track.title}}</label>
+        {% for tag in track.tags.all %}
+        <label class="badge bg-primary" style="color:white">{{ tag }}</label>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <span class="form__error">{{ form.track.errors }}</span>
+
+    <button type="submit" class="btn btn-success"> Сохранить изенения </button>
+
+
+
+</form>
+
+
+
+</div>
+</form>
+</div>
+<!-- card body -->
+</div>
+<!-- card -->
+</div>
+<!-- col -->
+</div>
+<!-- row -->
+
+{% endblock %}
